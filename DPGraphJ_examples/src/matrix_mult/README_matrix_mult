@@ -1,0 +1,5 @@
+Matrix chain multiplication problem: determine the optimal parenthesis of a product of n matrices.
+
+The matrix chain multiplication (or Matrix Chain Ordering Problem, MCOP) is an optimization problem 
+that seeks the most efficient way to multiply a given sequence of matrices. The problem is not actually 
+performing the multiplications but simply deciding the sequence of matrix multiplications involved.

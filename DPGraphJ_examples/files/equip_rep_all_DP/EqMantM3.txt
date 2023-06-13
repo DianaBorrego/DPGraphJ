@@ -1,0 +1,6 @@
+N:8
+M:3
+e0:2
+operating costs:10,22,53,100
+trade-in costs:50,23,7,0
+price:50
