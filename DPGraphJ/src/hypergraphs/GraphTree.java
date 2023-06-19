@@ -5,6 +5,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * <p> Recursive data type to represent the solution to a problem represented by a hypergraph
+ * </p>
+ *
+ * @param <V> type of the vertices
+ * @param <E> type of the edges
+ * @param <A> type of the alternatives
+ * @param <S> type of the solution
+ */
 public interface GraphTree<V extends HyperVertex<V, E, A, S>, E extends HyperEdge<V, E, A, S>, A, S> {
 
 	public static <V extends HyperVertex<V, E, A, S>, E extends HyperEdge<V, E, A, S>, A, S>
