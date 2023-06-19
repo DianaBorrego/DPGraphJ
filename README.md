@@ -163,4 +163,6 @@ public record EquipReplaceEdge(EquipReplaceVertex source,List<EquipReplaceVertex
 
 ## Support
 
-Author(s) and contact:...
+Authors: Irene Barba, Diana Borrego, Carmelo del Valle and Miguel Toro
+
+Contact: dianabn@us.es
