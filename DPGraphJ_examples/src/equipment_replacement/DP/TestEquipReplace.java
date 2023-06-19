@@ -26,8 +26,8 @@ public class TestEquipReplace {
 		
 		SimpleDirectedGraph<Union<EquipReplaceVertex, EquipReplaceEdge>, DefaultEdge> g = p.data().graph();
 		
-		Data.toDotHypergraph(g, "files/equip_rep_DP/hiperEquipReplace8.gv", p);
-		Data.toDotAndOr(g, "files/equip_rep_DP/andOrEquipReplace8.gv", p);
+		Data.toDotHypergraph(g, "files/equip_rep_DP/hiperEquipReplace1.gv", p);
+		Data.toDotAndOr(g, "files/equip_rep_DP/andOrEquipReplace1.gv", p);
 
 	
 	
