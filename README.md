@@ -161,6 +161,39 @@ public record EquipReplaceEdge(EquipReplaceVertex source,List<EquipReplaceVertex
 }
 ```
 
+To test the implemented code, we run a main where the data is initialised, the initial vertex is created, and from it the solution to the problem is generated. This solution is stored in a GraphTree.
+
+It is also possible to visualise the hypergraph and the AND/OR graph generated during the process of searching for the optimal solution by using the methods toDotHypergraph and toDotAndOr, respectively, which generate .gv files that can be visualised using GraphViz (even in its online version http://www.webgraphviz.com).
+
+```java
+public class TestEquipReplace {
+	public static void main(String[] args) {
+		Locale.setDefault(new Locale("en", "US"));
+		Auxiliar3.iniData("./files/equip_rep_DP/EqMant1.txt");
+		EquipReplaceVertex p = EquipReplaceVertex.initial();
+		SolStringDouble s = p.solution();
+		System.out.println(s.weight().toString());
+		System.out.println(s.s());
+		GraphTree<EquipReplaceVertex, EquipReplaceEdge, Integer, SolStringDouble> t = p.graphTree();
+		System.out.println(t.toString());
+		System.out.println(t.string());
+		
+		SimpleDirectedGraph<Union<EquipReplaceVertex, EquipReplaceEdge>, DefaultEdge> g = p.data().graph();
+		
+		Data.toDotHypergraph(g, "files/equip_rep_DP/hiperEquipReplace1.gv", p);
+		Data.toDotAndOr(g, "files/equip_rep_DP/andOrEquipReplace1.gv", p);
+	}
+}
+```
+
+As an example, the AND/OR network that is generated for an example with the following input data is shown:
+- n = 8
+- m = 3
+- e_0 = 2
+- operating costs: 10, 27, 50
+- trade-in costs: 120, 42, 27, 16
+- price: 120
+
 ## Support
 
 Authors: Irene Barba, Diana Borrego, Carmelo del Valle and Miguel Toro
