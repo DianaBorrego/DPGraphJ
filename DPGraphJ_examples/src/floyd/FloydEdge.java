@@ -8,11 +8,11 @@ import graphs.SimpleEdge;
 import hypergraphs.HyperEdge;
 import path.EGraphPath;
 
-public record FloydEdge2(FloydVertex2 source, List<FloydVertex2> targets, Boolean alternative)
-		implements HyperEdge<FloydVertex2, FloydEdge2, Boolean, GraphWalk<Integer,SimpleEdge<Integer>>> {
+public record FloydEdge(FloydVertex source, List<FloydVertex> targets, Boolean alternative)
+		implements HyperEdge<FloydVertex, FloydEdge, Boolean, GraphWalk<Integer,SimpleEdge<Integer>>> {
 
-	public static FloydEdge2 of(FloydVertex2 source, List<FloydVertex2> targets, Boolean action) {
-		return new FloydEdge2(source, targets, action);
+	public static FloydEdge of(FloydVertex source, List<FloydVertex> targets, Boolean action) {
+		return new FloydEdge(source, targets, action);
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public record FloydEdge2(FloydVertex2 source, List<FloydVertex2> targets, Boolea
 	}
 
 	@Override
-	public FloydEdge2 me() {
+	public FloydEdge me() {
 		return this;
 	}
 

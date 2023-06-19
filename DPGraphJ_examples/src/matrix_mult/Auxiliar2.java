@@ -17,8 +17,8 @@ public class Auxiliar2 {
 			MatrixInf m = MatrixInf.of(ls.get(i),ls.get(i+1));
 			r.add(m);
 		}
-		MatrixVertex2.matrices = r;
-		MatrixVertex2.n = r.size();
+		MatrixVertex.matrices = r;
+		MatrixVertex.n = r.size();
 		System.out.println(r);
 	}
 	

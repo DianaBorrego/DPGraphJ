@@ -4,14 +4,14 @@ import java.util.List;
 
 import hypergraphs.HyperEdge;
 
-public record MatrixEdge2(MatrixVertex2 source,List<MatrixVertex2> targets,Integer alternative) 
-           implements HyperEdge<MatrixVertex2,MatrixEdge2,Integer,String> {
+public record MatrixEdge(MatrixVertex source,List<MatrixVertex> targets,Integer alternative) 
+           implements HyperEdge<MatrixVertex,MatrixEdge,Integer,String> {
 	
-	public static MatrixEdge2 of(MatrixVertex2 source, List<MatrixVertex2> targets, Integer action) {
-		return new MatrixEdge2(source, targets, action);
+	public static MatrixEdge of(MatrixVertex source, List<MatrixVertex> targets, Integer action) {
+		return new MatrixEdge(source, targets, action);
 	}
 	
-	public MatrixEdge2 me() {
+	public MatrixEdge me() {
 		return this;
 	}
 
@@ -21,7 +21,7 @@ public record MatrixEdge2(MatrixVertex2 source,List<MatrixVertex2> targets,Integ
 		Integer i = source.i();
 		Integer a = alternative();
 		Integer j = source.j();
-		weight += MatrixVertex2.matrices.get(i).nf*MatrixVertex2.matrices.get(a).nf*MatrixVertex2.matrices.get(j-1).nc;
+		weight += MatrixVertex.matrices.get(i).nf*MatrixVertex.matrices.get(a).nf*MatrixVertex.matrices.get(j-1).nc;
 		return weight;
 	}
 

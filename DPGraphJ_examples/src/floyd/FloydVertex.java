@@ -10,16 +10,16 @@ import utils.List2;
 import graphs.SimpleEdge;
 import hypergraphs.HyperVertex;
 
-public record FloydVertex2(Integer i,Integer j,Integer k) 
-		implements HyperVertex<FloydVertex2,FloydEdge2,Boolean,GraphWalk<Integer,SimpleEdge<Integer>>>{
+public record FloydVertex(Integer i,Integer j,Integer k) 
+		implements HyperVertex<FloydVertex,FloydEdge,Boolean,GraphWalk<Integer,SimpleEdge<Integer>>>{
 
 	
-	public static FloydVertex2 initial(Integer i,Integer j) {	
-		return new FloydVertex2(i,j,0);
+	public static FloydVertex initial(Integer i,Integer j) {	
+		return new FloydVertex(i,j,0);
 	}
 	
-	public static FloydVertex2 of(Integer i,Integer j,Integer k) {	
-		return new FloydVertex2(i,j,k);
+	public static FloydVertex of(Integer i,Integer j,Integer k) {	
+		return new FloydVertex(i,j,k);
 	}
 
 	public static Graph<Integer,SimpleEdge<Integer>> graph;
@@ -37,16 +37,16 @@ public record FloydVertex2(Integer i,Integer j,Integer k)
 	}
 	
 	@Override
-	public List<FloydVertex2> neighbors(Boolean a) {
-		List<FloydVertex2> r=null;
-		if(!a) r = List.of(FloydVertex2.of(i,j,k+1)); 
-		else r = List.of(FloydVertex2.of(i, k, k+1),FloydVertex2.of(k, j, k+1)); 
+	public List<FloydVertex> neighbors(Boolean a) {
+		List<FloydVertex> r=null;
+		if(!a) r = List.of(FloydVertex.of(i,j,k+1)); 
+		else r = List.of(FloydVertex.of(i, k, k+1),FloydVertex.of(k, j, k+1)); 
 		return r;
 	}
 	
 	@Override
-	public FloydEdge2 edge(Boolean a) {
-		return FloydEdge2.of(this,this.neighbors(a), a);
+	public FloydEdge edge(Boolean a) {
+		return FloydEdge.of(this,this.neighbors(a), a);
 	}
 	
 	@Override
@@ -57,9 +57,9 @@ public record FloydVertex2(Integer i,Integer j,Integer k)
 	@Override
 	public Double baseCaseSolutionWeight() {
 		Double r = null;
-		if(k ==n && FloydVertex2.graph.containsEdge(this.i, this.j)){
-			r = FloydVertex2.graph.getEdge(i, j).weight();
-		} else if(k ==n && !FloydVertex2.graph.containsEdge(this.i, this.j)) {
+		if(k ==n && FloydVertex.graph.containsEdge(this.i, this.j)){
+			r = FloydVertex.graph.getEdge(i, j).weight();
+		} else if(k ==n && !FloydVertex.graph.containsEdge(this.i, this.j)) {
 			r = null;
 		}
 		return r;
@@ -77,19 +77,19 @@ public record FloydVertex2(Integer i,Integer j,Integer k)
 	public GraphWalk<Integer, SimpleEdge<Integer>> baseCaseSolution() {
 		GraphWalk<Integer, SimpleEdge<Integer>> gp = null;
 		if(this.i.equals(this.j)) 
-			gp = new GraphWalk<>(FloydVertex2.graph,List2.of(i),0.);
-		else if(k ==n && FloydVertex2.graph.containsEdge(this.i, this.j)){
-			Double w = FloydVertex2.graph.getEdge(i, j).weight();
+			gp = new GraphWalk<>(FloydVertex.graph,List2.of(i),0.);
+		else if(k ==n && FloydVertex.graph.containsEdge(this.i, this.j)){
+			Double w = FloydVertex.graph.getEdge(i, j).weight();
 			List<Integer> ls = List2.of(i,j);
-			gp = new GraphWalk<>(FloydVertex2.graph,ls,w);
-		} else if(k ==n && !FloydVertex2.graph.containsEdge(this.i, this.j)) {
+			gp = new GraphWalk<>(FloydVertex.graph,ls,w);
+		} else if(k ==n && !FloydVertex.graph.containsEdge(this.i, this.j)) {
 			gp = null;
 		}
 		return gp;
 	}
 
 	@Override
-	public FloydVertex2 me() {
+	public FloydVertex me() {
 		return this;
 	}
 	

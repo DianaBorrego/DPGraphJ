@@ -7,16 +7,16 @@ import java.util.stream.IntStream;
 
 import hypergraphs.HyperVertex;
 	
-public record MatrixVertex2(Integer i,Integer j) 
-		implements HyperVertex<MatrixVertex2,MatrixEdge2,Integer,String>{
+public record MatrixVertex(Integer i,Integer j) 
+		implements HyperVertex<MatrixVertex,MatrixEdge,Integer,String>{
 
 		
-		public static MatrixVertex2 of(Integer i, Integer j) {
-			return new MatrixVertex2(i, j);
+		public static MatrixVertex of(Integer i, Integer j) {
+			return new MatrixVertex(i, j);
 		}
 		
-		public static MatrixVertex2 initial() {
-			return new MatrixVertex2(0, n);
+		public static MatrixVertex initial() {
+			return new MatrixVertex(0, n);
 		}
 		
 		public static List<MatrixInf> matrices;
@@ -24,7 +24,7 @@ public record MatrixVertex2(Integer i,Integer j)
 
 		
 		@Override
-		public MatrixVertex2 me() {
+		public MatrixVertex me() {
 			return this;
 		}
 
@@ -59,21 +59,21 @@ public record MatrixVertex2(Integer i,Integer j)
 			Integer d = j-i;
 			return switch(d) {
 			case 0 -> ""; 
-			case 1 -> MatrixVertex2.matrices.get(i()).toString();
-			case 2 -> String.format("(%s * %s)",MatrixVertex2.matrices.get(i).toString(),
-					MatrixVertex2.matrices.get(i+1).toString());
+			case 1 -> MatrixVertex.matrices.get(i()).toString();
+			case 2 -> String.format("(%s * %s)",MatrixVertex.matrices.get(i).toString(),
+					MatrixVertex.matrices.get(i+1).toString());
 			default -> null;
 			};
 		}
 
 		@Override
-		public List<MatrixVertex2> neighbors(Integer a) {
-			return Arrays.asList(MatrixVertex2.of(i, a),MatrixVertex2.of(a, j));
+		public List<MatrixVertex> neighbors(Integer a) {
+			return Arrays.asList(MatrixVertex.of(i, a),MatrixVertex.of(a, j));
 		}
 
 		@Override
-		public MatrixEdge2 edge(Integer a) {
-			return MatrixEdge2.of(this, this.neighbors(a),a);
+		public MatrixEdge edge(Integer a) {
+			return MatrixEdge.of(this, this.neighbors(a),a);
 		}
 
 		@Override

@@ -6,38 +6,38 @@ import hypergraphs.HyperVertex;
 import utils.List2;
 
 
-public record EquipReplaceVertex3(Integer i,Integer j,Integer k) 
-		implements HyperVertex<EquipReplaceVertex3,EquipReplaceEdge3,Integer,SolStringDouble> {
+public record EquipReplaceVertex(Integer i,Integer j,Integer k) 
+		implements HyperVertex<EquipReplaceVertex,EquipReplaceEdge,Integer,SolStringDouble> {
 	
 	
-	public static EquipReplaceVertex3 initial() {	
-		return new EquipReplaceVertex3(e0,0,N);
+	public static EquipReplaceVertex initial() {	
+		return new EquipReplaceVertex(e0,0,N);
 	}
 	
-	public static EquipReplaceVertex3 of(Integer i,Integer j,Integer k) {	
-		return new EquipReplaceVertex3(i,j,k);
+	public static EquipReplaceVertex of(Integer i,Integer j,Integer k) {	
+		return new EquipReplaceVertex(i,j,k);
 	}
 
-	//nuúmero de periodos
+	//number of periods
 	public static int N;
-	//edad máxima
+	//maximum age
 	public static int M;
-	//edad inicial
+	//initial age
 	public static int e0;
-	//coste mantenimiento según edad
+	//maintenance cost according to age
 	public static List<Integer> operatingCost;
-	//coste intercambio por nuevo según edad
+	//cost to exchange for a new one according to age
 	public static List<Integer> tradeinCost;
-	//precio nuevo equipo
+	//price of new equipment
 	public static int priceNew;
 	
 	@Override
-	public EquipReplaceVertex3 me() {
+	public EquipReplaceVertex me() {
 		return this;
 	}
 
-	public EquipReplaceVertex3 neighbor(Integer i, Integer j, Integer k){
-		return new EquipReplaceVertex3(i,j,k);
+	public EquipReplaceVertex neighbor(Integer i, Integer j, Integer k){
+		return new EquipReplaceVertex(i,j,k);
 	}
 	
 	@Override
@@ -53,8 +53,8 @@ public record EquipReplaceVertex3(Integer i,Integer j,Integer k)
 	}
 	
 	@Override
-	public List<EquipReplaceVertex3> neighbors(Integer a) {
-		List<EquipReplaceVertex3> r=null;
+	public List<EquipReplaceVertex> neighbors(Integer a) {
+		List<EquipReplaceVertex> r=null;
 		if (j==0) {
 			r = List.of(this.neighbor(i, a, k));
 		} else {
@@ -64,8 +64,8 @@ public record EquipReplaceVertex3(Integer i,Integer j,Integer k)
 	}
 	
 	@Override
-	public EquipReplaceEdge3 edge(Integer a) {
-		return EquipReplaceEdge3.of(this,this.neighbors(a), a);
+	public EquipReplaceEdge edge(Integer a) {
+		return EquipReplaceEdge.of(this,this.neighbors(a), a);
 	}
 	
 	@Override

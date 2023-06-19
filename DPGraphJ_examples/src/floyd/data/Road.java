@@ -2,24 +2,24 @@ package floyd.data;
 
 
 
-public record Carretera(Integer id, Double km, String nombre) {
+public record Road(Integer id, Double km, String nombre) {
 
 	private static int num =0;
 	
-	public static Carretera ofFormat(String[] formato) {
+	public static Road ofFormat(String[] formato) {
 		Double km = Double.parseDouble(formato[3]);
 		String nomb = formato[2];		
 		Integer id = num;
 		num++;
-		return new Carretera(id, km, nomb);
+		return new Road(id, km, nomb);
 	}
 	
-	public static Carretera of(Double kms) {
+	public static Road of(Double kms) {
 		Double km = kms;
 		String nomb = null;		
 		Integer id = num;
 		num++;
-		return new Carretera(id, km, nomb);
+		return new Road(id, km, nomb);
 	}
 
 	@Override

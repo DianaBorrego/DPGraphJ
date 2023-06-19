@@ -4,18 +4,18 @@ import java.util.List;
 
 import hypergraphs.HyperEdge;
 
-public record EquipReplaceEdge3(EquipReplaceVertex3 source,List<EquipReplaceVertex3> targets,Integer alternative) 
-        implements HyperEdge<EquipReplaceVertex3,EquipReplaceEdge3,Integer,SolStringDouble>{
+public record EquipReplaceEdge(EquipReplaceVertex source,List<EquipReplaceVertex> targets,Integer alternative) 
+        implements HyperEdge<EquipReplaceVertex,EquipReplaceEdge,Integer,SolStringDouble>{
 	
-	public static EquipReplaceEdge3 of(EquipReplaceVertex3 source, List<EquipReplaceVertex3> targets, Integer action) {
-		return new EquipReplaceEdge3(source, targets, action);
+	public static EquipReplaceEdge of(EquipReplaceVertex source, List<EquipReplaceVertex> targets, Integer action) {
+		return new EquipReplaceEdge(source, targets, action);
 	}
 
 	@Override
 	public Double solutionWeight(List<Double> solutions) {
 		Double weight = null;
 		if (source.j()==0) {
-			weight = solutions.get(0) - EquipReplaceVertex3.tradeinCost.get(this.alternative());
+			weight = solutions.get(0) - EquipReplaceVertex.tradeinCost.get(this.alternative());
 		} else {
 			weight = solutions.get(0) + solutions.get(1);
 		}
@@ -32,7 +32,7 @@ public record EquipReplaceEdge3(EquipReplaceVertex3 source,List<EquipReplaceVert
 			r = String.format("%s -> %s",solutions.get(0).s(),solutions.get(1).s());	
 		}
 		if (source.j()==0) {
-			weight = solutions.get(0).weight() - EquipReplaceVertex3.tradeinCost.get(this.alternative());
+			weight = solutions.get(0).weight() - EquipReplaceVertex.tradeinCost.get(this.alternative());
 		} else {
 			weight = solutions.get(0).weight() + solutions.get(1).weight();
 		}
@@ -45,7 +45,7 @@ public record EquipReplaceEdge3(EquipReplaceVertex3 source,List<EquipReplaceVert
 		return this.alternative().toString();
 	}
 
-	public EquipReplaceEdge3 me() {
+	public EquipReplaceEdge me() {
 		return this;
 	}
 

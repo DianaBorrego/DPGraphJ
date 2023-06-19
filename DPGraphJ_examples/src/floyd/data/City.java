@@ -1,15 +1,15 @@
 package floyd.data;
 
-public record Ciudad(String nombre, Integer habitantes)  {
+public record City(String nombre, Integer habitantes)  {
 
-	public static Ciudad ofFormat(String[] formato) {
+	public static City ofFormat(String[] formato) {
 		String nombre = formato[0];
 		Integer habitantes = Integer.parseInt(formato[1]);
-		return new Ciudad(nombre,habitantes);
+		return new City(nombre,habitantes);
 	}
 	
-	public static Ciudad of(String nombre, Integer habitantes) {
-		return new Ciudad(nombre,habitantes);
+	public static City of(String nombre, Integer habitantes) {
+		return new City(nombre,habitantes);
 	}
 	
 	@Override
