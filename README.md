@@ -49,7 +49,6 @@ Next we must implement the record for the vertex, which implements the HyperVert
 public record EquipReplaceVertex(Integer i,Integer j,Integer k) 
 		implements HyperVertex<EquipReplaceVertex,EquipReplaceEdge,Integer,SolStringDouble> {
 	
-	
 	public static EquipReplaceVertex initial() {	
 		return new EquipReplaceVertex(e0,0,N);
 	}
@@ -120,24 +119,25 @@ List of subproblems (i.e. vertices) that are neighbors of the current problem wh
 - j==0 -> [(i,a,k)]
 - j>0 -> [(i,a,k/2),(a,j,k-k/2)]
 ```java
-    public List<EquipReplaceVertex> neighbors(Integer a) {
-		List<EquipReplaceVertex> r=null;
-		if (j==0) {
-			r = List.of(this.neighbor(i, a, k));
-		} else {
-			r = List.of(this.neighbor(i, a, k/2), this.neighbor(a, j, k-k/2));
-		}
-		return r;
+public List<EquipReplaceVertex> neighbors(Integer a) {
+	List<EquipReplaceVertex> r=null;
+	if (j==0) {
+		r = List.of(this.neighbor(i, a, k));
+	} else {
+		r = List.of(this.neighbor(i, a, k/2), this.neighbor(a, j, k-k/2));
 	}
-  
-  public EquipReplaceVertex neighbor(Integer i, Integer j, Integer k){
-		return new EquipReplaceVertex(i,j,k);
-	}
-  //edge that originates from taking alternative a
-  public EquipReplaceEdge edge(Integer a) {
-		return EquipReplaceEdge.of(this,this.neighbors(a), a);
-	}
-	
+	return r;
+}
+public EquipReplaceVertex neighbor(Integer i, Integer j, Integer k){
+	return new EquipReplaceVertex(i,j,k);
+}
+```
+
+Edge that originates from taking alternative a.
+```java
+public EquipReplaceEdge edge(Integer a) {
+	return EquipReplaceEdge.of(this,this.neighbors(a), a);
+}	
 ```
 
 And finally, the edge should be implemented, following the modelling of the HyperEdge interface.
