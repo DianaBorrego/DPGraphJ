@@ -102,20 +102,25 @@ public Double baseCaseSolutionWeight() {
 }
 ```
 
-Solution to the problem when it is a base case
+Solution to the problem when it is a base case.
 ```java
-  public SolStringDouble baseCaseSolution() {
-		Double weight = baseCaseSolutionWeight();
-		String s=null;
-		if (j==1) {
-			s="1";
-		} else if (j==i+1) {
-			s=j.toString();
-		}
-		return SolStringDouble.of(s, weight);
+public SolStringDouble baseCaseSolution() {
+	Double weight = baseCaseSolutionWeight();
+	String s=null;
+	if (j==1) {
+		s="1";
+	} else if (j==i+1) {
+		s=j.toString();
 	}
-  //list of subproblems (i.e. vertices) that are neighbors of the current problem when considering alternative a
-  public List<EquipReplaceVertex> neighbors(Integer a) {
+	return SolStringDouble.of(s, weight);
+}
+```
+
+List of subproblems (i.e. vertices) that are neighbors of the current problem when considering alternative a. For this example:
+- j==0 -> [(i,a,k)]
+- j>0 -> [(i,a,k/2),(a,j,k-k/2)]
+```java
+    public List<EquipReplaceVertex> neighbors(Integer a) {
 		List<EquipReplaceVertex> r=null;
 		if (j==0) {
 			r = List.of(this.neighbor(i, a, k));
