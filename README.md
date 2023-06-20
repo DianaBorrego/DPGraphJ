@@ -17,11 +17,16 @@ DPGraphJ is a collection of reusable Java functions to solve optimization proble
 
 ## Project tree
 
-- [DPGraphJ](DPGraphJ)
+- [DPGraphJ](DPGraphJ): is the project containing the reusable code for solving problems using Dynamic programming.
+	- package [colors](DPGraphJ/src/colors): to format the visual representation of the AND/OR graphs and hypergraphs
+ 	- package [graphs](DPGraphJ/src/graphs): code for the implementation of the DP and DPR algorithms
+ 	- package [hypergraphs](DPGraphJ/src/hypergraphs): code for the implementation of the hypergraph data structures
+ 	- package [path](DPGraphJ/src/path): utility code for handling paths in graphs
+ 	- package [utils](DPGraphJ/src/path): code for handling data structures and basic types
 
 ## Getting started with an example
 
-For solving a Dynamic Programming problem, you have to implement some specific code. Let's go through the steps with the example of the [equipment replacement](https://github.com/DianaBorrego/DPGraphJ/tree/main/DPGraphJ_examples/src/equipment_replacement), which is stated as follows: 
+For solving a Dynamic Programming problem, you have to implement some specific code. Let's go through the steps with the example of the [equipment replacement](DPGraphJ_examples/src/equipment_replacement), which is stated as follows: 
 
 The problem seeks to determine an optimal replacement policy for a single piece of equipment of age *i* over a time horizon of *n* units. We assume:
 
@@ -214,7 +219,7 @@ As an example, the AND/OR graph that is generated for an example with the follow
 - trade-in costs: 120, 42, 27, 16
 - price: 120
 
-![AND/OR graph for the example](https://github.com/DianaBorrego/DPGraphJ/blob/main/images/AND-OR-graph-equipment-replacement-problem.png)
+![AND/OR graph for the example](images/AND-OR-graph-equipment-replacement-problem.png)
 
 ## Support
 
