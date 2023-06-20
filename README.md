@@ -72,32 +72,38 @@ Alternatives to reduce the current problem to problems of smaller size. For this
 - k>1 -> [1,...,M]
 - otherwise -> empty
 ```java
-  public List<Integer> alternatives() {
-		if (k>1)
-			return List2.rangeList(1, M+1);
-		else 
-			return List.of();
-	}
+public List<Integer> alternatives() {
+	if (k>1)
+		return List2.rangeList(1, M+1);
+	else 
+		return List.of();
+}
 ```
 
-
-
+True if the current problem is a base case (i.e. vertex with no outgoing edges).
 ```java
-  //true in case the current problem is a base case
-  public Boolean isBaseCase() {
-		return  k == 1; 
+public Boolean isBaseCase() {
+	return  k == 1; 
+}
+```
+
+Weight of the solution to the problem when this is a base case, being the weight the value for the objective function to be optimised. For this example:
+- j==1 -> t(0) - t(i) + c(0)
+- j==i+1 -> c(i)
+```java
+public Double baseCaseSolutionWeight() {
+	Double r = null;
+	if (j==1) {
+		r = (double) (tradeinCost.get(0)-tradeinCost.get(i)+operatingCost.get(0));
+	} else if (j==i+1) {
+		r = (double) operatingCost.get(i);
 	}
-  //weight of the solution to the problem when this is a base case, being the weight the value for the objective function to be optimised
-  public Double baseCaseSolutionWeight() {
-		Double r = null;
-		if (j==1) {
-			r = (double) (tradeinCost.get(0)-tradeinCost.get(i)+operatingCost.get(0));
-		} else if (j==i+1) {
-			r = (double) operatingCost.get(i);
-		}
-		return r;
-	}
-  //solution to the problem when it is a base case
+	return r;
+}
+```
+
+Solution to the problem when it is a base case
+```java
   public SolStringDouble baseCaseSolution() {
 		Double weight = baseCaseSolutionWeight();
 		String s=null;
