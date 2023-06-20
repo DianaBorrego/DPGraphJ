@@ -12,9 +12,8 @@ Java $\geq$ 18
 
 ## Usage
 
-The main goal of DPGraphJ is...
+DPGraphJ is a collection of reusable Java functions to solve optimization problems using a dynamic programming algorithm. It is based on a recursive schema that follows a top-down approach and uses the memoization technique. Such algorithm is a reusable software component that is generic and efficient and has been developed by paying special attention to good practices in the design of software. For using DPGraphJ, the problem to be solved needs to be modelled as an AND/OR graph. In the DPGraphJ_examples package, we provide 5 academic case studies.
 
-PONER ALGO DE MODULE-INFO?
 
 ## Project tree
 
