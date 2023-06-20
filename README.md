@@ -31,7 +31,7 @@ The problem seeks to determine an optimal replacement policy for a single piece 
 - The initial age is *e_0*.
 - At each time unit, the possible decisions are *M*, *C* (keep, change) consisting of keeping the part at the current instant if possible or changing it for a new one.
 
-To solve this problem by dynamic programming using DPGraphJ we must first implement the record that models the type of the solution:
+To solve this problem by dynamic programming using DPGraphJ we must first implement the record that models the type of the solution, which is modelled as a string that contains integers concatenated by "->", where the integer in the i-th position represents the age of the equipment at the end of period i, that is, at the beginning of period i+1.
 
 ```java
 public record SolStringDouble(String s, Double weight) {
@@ -40,7 +40,10 @@ public record SolStringDouble(String s, Double weight) {
 	}
 }
 ```
-Next we must implement the record for the vertex, which implements the HyperVertex interface, starting with the initial vertex, the of method for vertex creation and the attributes.
+Next we must implement the record for the vertex, which implements the HyperVertex interface. For this example, we model each vertex as 3 integers (i,j,k) representing the problem of finding the minimum cost when starting with a piece of age $i$, finishing with a piece of age $j$, and considering a time horizon of $k$ years. In the code, we must start implementing: 
+- the initial problem (e_0,0,n), indicating that the final age of the equipment can be any age, and in all cases, the value of releasing the equipment at the end will be considered. This is the only problem with j=0.
+- the of method for vertex creation
+- the attributes
 
 ```java
 public record EquipReplaceVertex(Integer i,Integer j,Integer k) 
