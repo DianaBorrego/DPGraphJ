@@ -68,14 +68,21 @@ public record EquipReplaceVertex(Integer i,Integer j,Integer k)
 
 Then, the methods of the HyperVertex interface are implemented, although some of them do not require it because they have default implementations. 
 
+Alternatives to reduce the current problem to problems of smaller size. For this example:
+- k>1 -> [1,...,M]
+- otherwise -> empty
 ```java
-  //list of alternatives of the current problem
   public List<Integer> alternatives() {
 		if (k>1)
 			return List2.rangeList(1, M+1);
 		else 
 			return List.of();
 	}
+```
+
+
+
+```java
   //true in case the current problem is a base case
   public Boolean isBaseCase() {
 		return  k == 1; 
