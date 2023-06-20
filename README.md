@@ -21,7 +21,7 @@ AQUI PONER EL CONTENIDO DE CADA PROYECTO, O SOLO DEL PRINCIPAL Y DESPUES DETALLA
 
 ## Getting started with an example
 
-For solving a Dynamic Programming problem, you have to implement some specific code. Let's go through the steps with the example of the *equipment replacement*, which is stated as follows: 
+For solving a Dynamic Programming problem, you have to implement some specific code. Let's go through the steps with the example of the [equipment replacement](https://github.com/DianaBorrego/DPGraphJ/tree/main/DPGraphJ_examples/src/equipment_replacement), which is stated as follows: 
 
 The problem seeks to determine an optimal replacement policy for a single piece of equipment of age *i* over a time horizon of *n* units. We assume:
 
