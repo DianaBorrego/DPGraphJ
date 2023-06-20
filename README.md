@@ -186,7 +186,7 @@ public class TestEquipReplace {
 }
 ```
 
-As an example, the AND/OR graph that is generated for an example with the following input data is shown:
+As an example, the AND/OR graph that is generated for an example with the following input data is shown. On it the vertices and edges of the graphtree representing the optimal solution are drawn in red.
 - n = 8
 - m = 3
 - e_0 = 2
