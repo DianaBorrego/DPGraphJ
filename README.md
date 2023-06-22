@@ -4,7 +4,7 @@
 
 ## Purpose
 
-DPGraphJ is intended for teachers, students, scientists, or more generally anyone with minimal skills in Java programming who wish to systematically solve optimisation problems using dynamic programming.
+DPGraphJ is intended for teachers, students, scientists, or more generally anyone with minimal skills in Java programming who wish to systematically solve optimisation problems using dynamic programming (DP).
 
 ## Requirements
 
@@ -12,14 +12,14 @@ Java $\geq$ 18
 
 ## Usage
 
-DPGraphJ is a collection of reusable Java functions to solve optimization problems using a dynamic programming algorithm. It is based on a recursive schema that follows a top-down approach and uses the memoization technique. Such algorithm is a reusable software component that is generic and efficient and has been developed by paying special attention to good practices in the design of software. For using DPGraphJ, the problem to be solved needs to be modelled as an AND/OR graph. In the DPGraphJ_examples package, we provide 5 academic case studies.
+DPGraphJ is a collection of reusable Java functions to solve optimization problems using a dynamic programming algorithm. It is based on a recursive schema that follows a top-down approach and uses the memoization technique. Such algorithm is a reusable software component that is generic and efficient. It has been developed by paying special attention to good practices in the design of software. For using DPGraphJ, the problem to be solved needs to be modelled as an AND/OR graph. In the DPGraphJ_examples package, we provide 5 academic case studies.
 
 
 ## Project tree
 
 - [DPGraphJ](DPGraphJ): project containing the reusable code for solving problems using Dynamic programming.
-	- package [colors](DPGraphJ/src/colors): to format the visual representation of the AND/OR graphs and hypergraphs
- 	- package [graphs](DPGraphJ/src/graphs): code for the implementation of the DP and DPR algorithms
+	- package [colors](DPGraphJ/src/colors): to format the visual representation of the AND/OR graphs and hypergraphs that are generated during the resolution of a problem through DP
+ 	- package [graphs](DPGraphJ/src/graphs): code for the implementation of the DP algorithms
  	- package [hypergraphs](DPGraphJ/src/hypergraphs): code for the implementation of the hypergraph data structures
  	- package [path](DPGraphJ/src/path): utility code for handling paths in graphs
  	- package [utils](DPGraphJ/src/path): code for handling data structures and basic types
@@ -27,7 +27,7 @@ DPGraphJ is a collection of reusable Java functions to solve optimization proble
 	- [equipment_replacement](DPGraphJ_examples/src/equipment_replacement): problem to determine an optimal replacement policy for a single piece of equipment of age i over a time horizon of n units.
 	- [equipment_replacement_all](DPGraphJ_examples/src/equipment_replacement_all): variant of the equipment replacement problem, except that in each unit of time, the possible decisions are to keep the part or replace it with another of any possible age, not necessarily new.
 	- [floyd](DPGraphJ_examples/src/floyd): problem to calculate the shortest path connecting two vertices of a graph, considering that there are no negative weights.
-	- [matrix_mult](DPGraphJ_examples/src/matrix_mult): problem to determine the optimal parenthesis of a product of n matrices.
+	- [matrix_mult](DPGraphJ_examples/src/matrix_mult): problem to determine the optimal parenthesization of a chain of matrices to be multiplied such that the number of scalar multiplications is minimized.
 	- [resources_allocation](DPGraphJ_examples/src/resources_allocation): problem to distribute x units of a resource among n activities, intending to maximize the return of that allocation, and subject to certain constraints.
  	- [files](DPGraphJ_examples/files) folder: contains both .txt files with different input data for the testing of the examples, and .gv files with the output in the form of hypergraphs and AND/OR graphs, in [GraphViz](http://www.webgraphviz.com) viewable format.
 
@@ -54,7 +54,7 @@ public record SolStringDouble(String s, Double weight) {
 ```
 Next we must implement the record for the vertex, which implements the HyperVertex interface. For this example, we model each vertex as 3 integers (i,j,k) representing the problem of finding the minimum cost when starting with a piece of age $i$, finishing with a piece of age $j$, and considering a time horizon of $k$ years. In the code, we must start implementing: 
 - the initial problem (e_0,0,n), indicating that the final age of the equipment can be any age, and in all cases, the value of releasing the equipment at the end will be considered. This is the only problem with j=0.
-- the of method for vertex creation
+- the *of* method for vertex creation
 - the attributes
 
 ```java
