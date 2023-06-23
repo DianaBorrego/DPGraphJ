@@ -55,7 +55,7 @@ public record SolStringDouble(String s, Double weight) {
 Next we must implement the record for the vertex, which implements the HyperVertex interface. For this example, we model each vertex as 3 integers (i,j,k) representing the problem of finding the minimum cost when starting with a piece of age $i$, finishing with a piece of age $j$, and considering a time horizon of $k$ years. In the code, we must start implementing: 
 - the initial problem (e_0,0,n), indicating that the final age of the equipment can be any age, and in all cases, the value of releasing the equipment at the end will be considered. This is the only problem with j=0.
 - the *of* method for vertex creation
-- the attributes
+- the attributes for modelling the individual properties of the vertices and the general information of the problem
 
 ```java
 public record EquipReplaceVertex(Integer i,Integer j,Integer k) 
@@ -152,7 +152,7 @@ public EquipReplaceEdge edge(Integer a) {
 }	
 ```
 
-And finally, the edge should be implemented, following the modelling of the HyperEdge interface.
+And finally, the edges should be modelled, implementing the HyperEdge interface.
 ```java
 public record EquipReplaceEdge(EquipReplaceVertex source,List<EquipReplaceVertex> targets,Integer alternative) implements HyperEdge<EquipReplaceVertex,EquipReplaceEdge,Integer,SolStringDouble>{
 	
@@ -218,7 +218,7 @@ public class TestEquipReplace {
 }
 ```
 
-As an example, the AND/OR graph that is generated for an example with the following input data is shown. On it the vertices and edges of the graphtree representing the optimal solution are drawn in red.
+As an example, the AND/OR graph that is generated for an example with the following input data is shown. On it the vertices and edges of the graphtree representing the optimal solution are depicted in red.
 - n = 8
 - m = 3
 - e_0 = 2
